@@ -8,7 +8,7 @@ public class HelloWorld {
 
     @RequestMapping("/")
     public String index() {
-        return "Bienvenue sur la dernière version de Cardis!";
+        return "Bonjour sur la branche Adams de Cardis!";
     }
 
 }
