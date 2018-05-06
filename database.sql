@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  lun. 07 mai 2018 à 00:13
+-- Généré le :  lun. 07 mai 2018 à 00:21
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.8
 
@@ -13,6 +13,23 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `cardis_fiches_module`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hibernate_sequence`
+--
+
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `hibernate_sequence`
+--
+
+INSERT INTO `hibernate_sequence` (`next_val`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
