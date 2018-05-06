@@ -1,4 +1,4 @@
-/**
+/** 
  * 
  */
 $(document).ready(function() {
@@ -14,7 +14,7 @@ $(document).ready(function() {
 			success: function(data) {
 	            console.log("SUCCESS : ", data);
 				for (var i = 0 ; i < data.length ; i++) {
-					if (data[i].userName == inputUsername && data[i].password == inputPassword) {
+					if (data[i].username == inputUsername && data[i].password == inputPassword) {
 						$("#login-results").html('<b style="color:green">Connexion réussie!</b>');
 						var loginSuccess = true;
 						return;
