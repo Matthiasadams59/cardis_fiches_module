@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Connexion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet">
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="webjars/jquery/1.11.1/jquery.min.js"></script>    
+</head>
+<body>
+    <div class="container">
+	    <div class="row">
+	    		<div class="col-lg-2">
+	    			<h2><span class="glyphicon glyphicon-file" style="color:purple"><b style="color:black;margin-left:10px">CARDIS</b></span></h2>
+	    		</div>
+	    		<div class="col-lg-8">
+	    		</div>
+	    		<div class="col-lg-2">
+	    		    	<h2><span class="glyphicon glyphicon-education" style="color:orange"><b style="color:black;margin-left:10px">ISEP</b></span></h2>
+	    		</div>
+	    </div>
+        <div class="row" style="margin-top: 125px;">
+        		<div class="col-lg-2"></div>
+        		<div class="col-lg-8">
+        			<div class="well" style="background-color:DodgerBlue;color:white;border:1px solid black">
+        				<h2 class="text-center">Connexion</h2>
+					<form class="form-horizontal" style="margin-top:30px; margin-bottom: 30px">
+					  <div class="form-group">
+					    <label for="inputUsername" class="col-lg-3 control-label">Identifiant :</label>
+					    <div class="col-lg-7">
+					      <input type="text" class="form-control" id="inputUsername" placeholder="Identifiant">
+					    </div>
+					    <div class="col-lg-2"></div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputPassword" class="col-lg-3 control-label">Mot de passe :</label>
+					    <div class="col-lg-7">
+					      <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+					    </div>
+					    <div class="col-lg-2"></div>					    
+					  </div>
+					  <div class="form-group" style="margin-top:30px">
+					    <div class="col-lg-offset-3 col-lg-3">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox"> Se souvenir de moi
+					        </label>
+					      </div>
+					    </div>
+					    <div class="col-lg-4">
+					      	<button type="submit" class="btn btn-default">Se connecter</button>
+					    	  </div>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-3">
+					  	<a href="javascript:;"><b>Mot de passe oublié?</b></a>
+					  </div>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+    		</div>
+    </div>
+</body>
+</html>
+
