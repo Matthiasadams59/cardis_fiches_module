@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 08 mai 2018 à 10:01
+-- Généré le :  mar. 08 mai 2018 à 19:02
 -- Version du serveur :  10.1.22-MariaDB
 -- Version de PHP :  7.1.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `description` (
 --
 
 INSERT INTO `description` (`id`, `modality_id`, `purpose_id`, `description`, `bibliography`) VALUES
-(1, 1, 1, 'Le marché des IOT connait une croissance exponentielle avec des besoins et des services de plus en plus\r\ninnovants. Ces objets connectés qui envahissent de plus en plus notre vie quotidienne sont composés du\r\npoint de vue matériel, de nombreuses briques fonctionnelles indispensables comme les capteurs pour la\r\ncollecte des données, les microcontrôleurs qui gèrent les données collectées, les batteries et les modules de\r\ntransmission Radio Fréquence.\r\nCe module fournit à l’élève ingénieur toutes les bases qui concernent la conception électronique d’un objet\r\ncommunicant allant du capteur vers le module RF.', 'N/A');
+(1, 1, 1, 'Le marché des IOT connait une croissance exponentielle avec des besoins et des services de plus en plus\r\ninnovants. Ces objets connectés qui envahissent de plus en plus notre vie quotidienne sont composés du\r\npoint de vue matériel, de nombreuses briques fonctionnelles indispensables comme les capteurs pour la\r\ncollecte des données, les microcontrôleurs qui gèrent les données collectées, les batteries et les modules de transmission Radio Fréquence.\r\nCe module fournit à l’élève ingénieur toutes les bases qui concernent la conception électronique d’un objet\r\ncommunicant allant du capteur vers le module RF.', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,6 @@ CREATE TABLE `information` (
   `user_id` int(11) DEFAULT NULL,
   `hour_id` int(11) DEFAULT NULL,
   `login` varchar(250) DEFAULT NULL,
-  `isTeamWork` tinyint(1) DEFAULT NULL,
   `tag` text,
   `devices` varchar(250) DEFAULT NULL,
   `is_team_work` bit(1) DEFAULT NULL
@@ -100,8 +99,8 @@ CREATE TABLE `information` (
 -- Déchargement des données de la table `information`
 --
 
-INSERT INTO `information` (`id`, `user_id`, `hour_id`, `login`, `isTeamWork`, `tag`, `devices`, `is_team_work`) VALUES
-(1, 2, 1, 'IE.2307/IE.2407\r\n', 1, 'capteurs, microcontrôleurs, périphériques, communications I2C SPI, Protocoles radio, énergie', 'Salle équipée des logiciels et matériel nécessaires', NULL);
+INSERT INTO `information` (`id`, `user_id`, `hour_id`, `login`, `tag`, `devices`, `is_team_work`) VALUES
+(1, 2, 1, 'IE.2307/IE.2407\r\n', 'capteurs, microcontrôleurs, périphériques, communications I2C SPI, Protocoles radio, énergie', 'Salle équipée des logiciels et matériel nécessaires', b'1111111111111111111111111111111');
 
 -- --------------------------------------------------------
 
@@ -167,6 +166,41 @@ CREATE TABLE `sheet` (
 
 INSERT INTO `sheet` (`id`, `user_id`, `information_id`, `description_id`, `title`, `date_creation`, `is_published`, `academic_year`) VALUES
 (1, 2, 1, 1, 'Sheet quelconque', '2018-05-07 21:47:40.303471', 1, '2017/2018');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `SPRING_SESSION`
+--
+
+CREATE TABLE `SPRING_SESSION` (
+  `PRIMARY_ID` char(36) NOT NULL,
+  `SESSION_ID` char(36) NOT NULL,
+  `CREATION_TIME` bigint(20) NOT NULL,
+  `LAST_ACCESS_TIME` bigint(20) NOT NULL,
+  `MAX_INACTIVE_INTERVAL` int(11) NOT NULL,
+  `EXPIRY_TIME` bigint(20) NOT NULL,
+  `PRINCIPAL_NAME` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+--
+-- Déchargement des données de la table `SPRING_SESSION`
+--
+
+INSERT INTO `SPRING_SESSION` (`PRIMARY_ID`, `SESSION_ID`, `CREATION_TIME`, `LAST_ACCESS_TIME`, `MAX_INACTIVE_INTERVAL`, `EXPIRY_TIME`, `PRINCIPAL_NAME`) VALUES
+('10230e30-a06a-4970-b2b9-ce75c82927df', 'a04decb4-276a-4633-ac54-e0a2a5821e55', 1525789966458, 1525789966458, 1800, 1525791766458, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `SPRING_SESSION_ATTRIBUTES`
+--
+
+CREATE TABLE `SPRING_SESSION_ATTRIBUTES` (
+  `SESSION_PRIMARY_ID` char(36) NOT NULL,
+  `ATTRIBUTE_NAME` varchar(200) NOT NULL,
+  `ATTRIBUTE_BYTES` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -248,6 +282,22 @@ ALTER TABLE `sheet`
   ADD KEY `id` (`id`);
 
 --
+-- Index pour la table `SPRING_SESSION`
+--
+ALTER TABLE `SPRING_SESSION`
+  ADD PRIMARY KEY (`PRIMARY_ID`),
+  ADD UNIQUE KEY `SPRING_SESSION_IX1` (`SESSION_ID`),
+  ADD KEY `SPRING_SESSION_IX2` (`EXPIRY_TIME`),
+  ADD KEY `SPRING_SESSION_IX3` (`PRINCIPAL_NAME`);
+
+--
+-- Index pour la table `SPRING_SESSION_ATTRIBUTES`
+--
+ALTER TABLE `SPRING_SESSION_ATTRIBUTES`
+  ADD PRIMARY KEY (`SESSION_PRIMARY_ID`,`ATTRIBUTE_NAME`),
+  ADD KEY `SPRING_SESSION_ATTRIBUTES_IX1` (`SESSION_PRIMARY_ID`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
@@ -326,6 +376,12 @@ ALTER TABLE `sheet`
   ADD CONSTRAINT `FKm0g3pt4p4ua3vs2x9cix06jyq` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `sheet_ibfk_1` FOREIGN KEY (`description_id`) REFERENCES `description` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `sheet_ibfk_2` FOREIGN KEY (`information_id`) REFERENCES `information` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `SPRING_SESSION_ATTRIBUTES`
+--
+ALTER TABLE `SPRING_SESSION_ATTRIBUTES`
+  ADD CONSTRAINT `SPRING_SESSION_ATTRIBUTES_FK` FOREIGN KEY (`SESSION_PRIMARY_ID`) REFERENCES `SPRING_SESSION` (`PRIMARY_ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
