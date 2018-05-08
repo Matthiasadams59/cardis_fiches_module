@@ -6,9 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.isep.cardis.projet_fiches_module_A2.user.User;
-
-
 @Service
 public class InformationService {
 	
