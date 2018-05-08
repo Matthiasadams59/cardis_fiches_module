@@ -1,6 +1,9 @@
 /** 
+Ancienne implémentation ajax de la connexion
+Remplacée par une utilisation du template thymeleaf et du Controller
  * 
  */
+/*
 $(document).ready(function() {
 	$("form").on('submit', function (event) {
 		$("#login-results").html("");
@@ -25,8 +28,10 @@ $(document).ready(function() {
 				}
 			},
 			error: function(e) {
+				$("#login-results").html('<b style="color:red">Connexion impossible!</b>');
 				console.log("ERROR : ", e);
 			}
 		});
 	});
 });
+*/

@@ -3,10 +3,9 @@
 <head>
     <title>Connexion</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-        rel="stylesheet">
-	<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" th:src="@{index.js}"></script>   
 </head>
 <body>
@@ -26,18 +25,18 @@
         		<div class="col-lg-8">
         			<div class="well" style="background-color:DodgerBlue;color:white;border:1px solid black">
         				<h2 class="text-center">Connexion</h2>
-					<form class="form-horizontal" style="margin-top:30px; margin-bottom: 60px">
+					<form class="form-horizontal" th:action="@{/}" method="post" style="margin-top:30px; margin-bottom: 60px">
 					  <div class="form-group">
 					    <label for="inputUsername" class="col-lg-3 control-label">Identifiant :</label>
 					    <div class="col-lg-7">
-					      <input type="text" class="form-control" id="inputUsername" placeholder="Identifiant" required>
+					      <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Identifiant" required>
 					    </div>
 					    <div class="col-lg-2"></div>
 					  </div>
 					  <div class="form-group">
 					    <label for="inputPassword" class="col-lg-3 control-label">Mot de passe :</label>
 					    <div class="col-lg-7">
-					      <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe" required>
+					      <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Mot de passe" required>
 					    </div>
 					    <div class="col-lg-2"></div>					    
 					  </div>
@@ -53,7 +52,13 @@
 					      	<button type="submit" id="btn-login" class="btn btn-default">Se connecter</button>
 					    	  </div>
 					  </div>
-					  <div class="col-lg-offset-4 col-lg-8" id="login-results">
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${connectError}">
+							<p><b style="color:FireBrick;">Connexion échouée!</b></p>
+							<p th:text="${connectError}"></p>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${logoutSuccess}">
+							<p><b style="color: blue">Déconnexion réussie!</b></p>
+						</div>
 					  </div>
 					  <div class="col-lg-offset-4 col-lg-8" style="margin-top:10px;">
 					  	<a href="javascript:;"><b>Mot de passe oublié?</b></a>

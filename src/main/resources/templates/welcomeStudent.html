@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Connexion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" th:src="@{index.js}"></script>   
+</head>
+<body>
+<p>Félicitations! Vous êtes bien arrivé sur la page Élève</p>
+<a th:href="@{/logout}" class="btn btn-info btn-default"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+</body>
+</html>
