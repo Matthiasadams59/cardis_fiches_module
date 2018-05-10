@@ -72,6 +72,6 @@ public class SheetController {
 		System.out.println(sheet.getUser());
 		//Optional<User>  responsable = userService.getUser();
 		sheetService.addSheet(sheet);
-		return "redirect:/Sheet/";
+		return "redirect:/all/sheets";
 	}
 }
