@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title th:text="${sheet.title}"></title>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -26,14 +29,12 @@
 						<div id="collapseOne" class="panel-collapse collapse in"
 							role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
-								<span th:text="'Title : '+ ${sheet.title}"></span><br>
-								<span
-									th:text="'Responsable : '+ ${sheet.user.firstname} + ' ' + ${sheet.user.firstname}"></span><br>
+								<span th:text="'Title : '+ ${sheet.title}"></span><br> <span
+									th:text="'Responsable : '+ ${sheet.user.firstname} + ' ' + ${sheet.user.lastname}"></span><br>
 								<span th:text="'ECTS : '+ ${sheet.ects} + ' crédit(s)'"></span><br>
 								<span th:text="'Identifiant : '+ ${sheet.login}"></span><br>
 								<span th:text="'Mots-clées : '+ ${sheet.keywords}"></span><br>
-								<span
-									th:text="${'Travail en equipe' + sheet.isteamwork}"></span><br>
+								<span th:text="${'Travail en equipe : ' + sheet.isteamwork}"></span><br>
 								<span
 									th:text="'Quantité de travail moyenne par élève : '+ ${sheet.hours}"></span><br>
 							</div>
@@ -51,8 +52,7 @@
 						<div id="collapseTwo" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="headingTwo">
 							<div class="panel-body">
-								<span
-									th:text="'Présentation : '+ ${sheet.description}"></span><br>
+								<span th:text="'Présentation : '+ ${sheet.description}"></span><br>
 							</div>
 						</div>
 					</div>
@@ -69,17 +69,17 @@
 						<div id="collapseThree" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="headingThree">
 							<div class="panel-body">
-								<span
-									th:text="'Contenu : '+ ${sheet.content}"></span><br>
-								<span th:text="'Compétences dites tranverses :'">
-								</span><br>
-								<option th:each="skill : ${sheet.skills}">
-   									<span th:text="' - ' + ${skill.skill}"></span><br>
+								<span th:text="'Contenu : '+ ${sheet.content}"></span><br>
+								<span>Compétences dites tranverses : </span><br>
+								<option th:each="skill : ${sheet.skills}"><span
+										th:text="' - ' + ${skill.skill}"></span><br>
 								</option>
+								<span th:text="'Outils des professeurs : '+ ${sheet.teacherTools}"></span><br>
+								<span th:text="'Outils des éléves : '+ ${sheet.studentTools}"></span><br>
 							</div>
 						</div>
 					</div>
-		
+
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingFour">
 							<h4 class="panel-title">
@@ -96,12 +96,11 @@
 									th:text="'Modalités d\'apprentissage : '+ ${sheet.learningMethod}"></span><br>
 								<span
 									th:text="'Modalités d\'évaluation : '+ ${sheet.grade_rating}"></span><br>
-								<span
-									th:text="'Langue de travail : '+ ${sheet.language}"></span><br>
+								<span th:text="'Langue de travail : '+ ${sheet.language}"></span><br>
 							</div>
 						</div>
 					</div>
-					
+
 
 				</div>
 				<!-- /.panel-group -->

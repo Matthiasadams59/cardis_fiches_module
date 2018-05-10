@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<meta charset="utf-8">
+<title>Formulaire</title>
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/sheet/add}" th:object="${sheet}"
+			method="post" class="well span8">
+			<div class="row">
+				<div class="span3">
+					<label>Title</label> <input class="span3"
+						placeholder="Your First Name" type="text" th:field="*{title}">
+					<label>Identifiant</label> <input class="span3"
+						placeholder="Identifiant" type="text" th:field="*{login}">
+					<label>ECTS</label> <input class="span3" placeholder="Nombre"
+						type="number" th:field="*{ects}"> <label>Travail
+						d'équipe ?</label> <input class="span3" type="radio"
+						th:value="*{isteamwork}">
+					<div class="span5">
+						<label>Mots-clées : </label>
+						<textarea class="input-xlarge span5" rows="10"
+							th:field="*{keywords}">
+    					</textarea>
+					</div>
+				<select class="span3" id="responsable" th:field="*{user}" th:each="teacher : ${teachers}">
+                    <option selected value="na">
+                        Choisir le responsable:
+                    </option>    
+                    <option th:value="${teacher.id}" th:text="${teacher.firstname} + ' ' + ${teacher.lastname}">
+                    </option> 
+                </select>
+					<div class="span5">
+						<label>Description des heures</label>
+						<textarea class="input-xlarge span5" rows="10" th:field="*{hours}">
+    					</textarea>
+					</div>
+					<label>Présentation du module</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{description}">
+    				</textarea>
+					<label>Prérequis :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{requirement}">
+    				</textarea>
+					<label>Description des outils des professeurs :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{teacherTools}">
+    				</textarea>
+					<label>Description des outils des éléves :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{studentTools}">
+    				</textarea>
+					<label>Contenu :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{content}">
+    				</textarea>
+					<label>Mobilisations ultérieures :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{nextModule}">
+    				</textarea>
+					<label>Méthodes d’apprentissage :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{learningMethod}">
+    				</textarea>
+					<label>Modalités d’évaluation :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{grade_rating}">
+    				</textarea>
+					<label>Langue :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{language}">
+    				</textarea>
+					<label>bibliography :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{bibliography}">
+    				</textarea>
+					<th:block th:each="skill : ${skills}">
+						<input type="checkbox" name="test" th:value="${skill.skill}" />
+						<label th:text="${skill.skill}"></label>
+					</th:block>
+					<button class="btn btn-primary pull-right" type="submit" id="send">Send</button>
+				</div>
+		</form>
+	</div>
+</body>
+</html>

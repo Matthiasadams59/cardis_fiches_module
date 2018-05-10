@@ -43,7 +43,7 @@ public class Sheet {
 	private boolean isPublished;
 
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany()
     @JoinTable(
         name = "course_skills", 
         joinColumns = { @JoinColumn(name = "sheet_id") }, 
@@ -175,11 +175,12 @@ public class Sheet {
 		this.user = user;
 	}
 	
-	public Sheet(String title, int ects, String login, String hours, boolean isteamwork, String description,
+	public Sheet(Integer id,String title, int ects, String login, String hours, boolean isteamwork, String description,
 			String requirement, String content, String teacherTools, String studentTools, String nextModule,
 			String learningMethod, String grade_rating, String language, String bibliography, String keywords,
 			boolean isPublished, Set<Skill> skills, User user) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.ects = ects;
 		this.login = login;
@@ -202,5 +203,5 @@ public class Sheet {
 	}
 	public Sheet() {
 
-	}	
+	}
 }

@@ -18,7 +18,9 @@ public class UserService {
 	public User getUser(String username) {
 		return userRepository.findByUsername(username);
 	}
-	
+	public List<User> getAllUsersByRole(String role) {
+		return userRepository.findByRole(role);
+	}
 	public void addUser(User user) {
 		userRepository.save(user);
 	}
