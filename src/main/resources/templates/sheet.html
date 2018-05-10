@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title th:text="${sheet.title}"></title>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -26,18 +29,14 @@
 						<div id="collapseOne" class="panel-collapse collapse in"
 							role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
-								<span th:text="'Title : '+ ${sheet.title}"></span><br>
+								<span th:text="'Title : '+ ${sheet.title}"></span><br> <span
+									th:text="'Responsable : '+ ${sheet.user.firstname} + ' ' + ${sheet.user.lastname}"></span><br>
+								<span th:text="'ECTS : '+ ${sheet.ects} + ' crédit(s)'"></span><br>
+								<span th:text="'Identifiant : '+ ${sheet.login}"></span><br>
+								<span th:text="'Mots-clées : '+ ${sheet.keywords}"></span><br>
+								<span th:text="${'Travail en equipe : ' + sheet.isteamwork}"></span><br>
 								<span
-									th:text="'Responsable : '+ ${sheet.information.user.firstname} + ' ' + ${sheet.information.user.firstname}"></span><br>
-								<span th:text="'Annee scolaire : '+ ${sheet.academicYear}"></span><br>
-								<span th:text="'Identifiant : '+ ${sheet.information.login}"></span><br>
-								<span th:text="'Tag : '+ ${sheet.information.tag}"></span><br>
-								 <span
-									th:text="'Equipement : '+ ${sheet.information.devices}"></span><br>
-								<span
-									th:text="${'Travail en equipe' + sheet.information.isTeamWork}"></span><br>
-								<span
-									th:text="'Nombre d’heure : '+ ${sheet.information.hour.total} + ' Total dont '+ ${sheet.information.hour.tutorial} + ' d’heures de tp'"></span><br>
+									th:text="'Quantité de travail moyenne par élève : '+ ${sheet.hours}"></span><br>
 							</div>
 						</div>
 					</div>
@@ -47,20 +46,13 @@
 								<a class="collapsed" role="button" data-toggle="collapse"
 									data-parent="#accordion" href="#collapseTwo"
 									aria-expanded="false" aria-controls="collapseTwo">
-									Description </a>
+									Présentation </a>
 							</h4>
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="headingTwo">
 							<div class="panel-body">
-								<span
-									th:text="'Descrption : '+ ${sheet.description.description}"></span><br>
-								<span
-									th:text="'Evaluation : '+ ${sheet.description.modality.evaluation}"></span><br>
-								<span
-									th:text="'Apprentissage : '+ ${sheet.description.modality.learning}"></span><br>
-								<span
-									th:text="'Langue : '+ ${sheet.description.modality.language}"></span><br>
+								<span th:text="'Présentation : '+ ${sheet.description}"></span><br>
 							</div>
 						</div>
 					</div>
@@ -71,21 +63,40 @@
 								<a class="collapsed" role="button" data-toggle="collapse"
 									data-parent="#accordion" href="#collapseThree"
 									aria-expanded="false" aria-controls="collapseThree">
-									Objectif</a>
+									Objectifs pédagogiques</a>
 							</h4>
 						</div>
 						<div id="collapseThree" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="headingThree">
 							<div class="panel-body">
-								<span th:if="${sheet.description.purpose.sheet}"> <a
-									th:href="@{'/Sheets/' + ${sheet.description.purpose.sheet.id}}"
-									th:text="Prerequis : '+ ${sheet.description.purpose.sheet.title}"></a></span><br>
+								<span th:text="'Contenu : '+ ${sheet.content}"></span><br>
+								<span>Compétences dites tranverses : </span><br>
+								<option th:each="skill : ${sheet.skills}"><span
+										th:text="' - ' + ${skill.skill}"></span><br>
+								</option>
+								<span th:text="'Outils des professeurs : '+ ${sheet.teacherTools}"></span><br>
+								<span th:text="'Outils des éléves : '+ ${sheet.studentTools}"></span><br>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseFour"
+									aria-expanded="false" aria-controls="collapseFour">
+									Modalités </a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="headingFour">
+							<div class="panel-body">
 								<span
-									th:text="'Contenu : '+ ${sheet.description.purpose.contents}"></span><br>
+									th:text="'Modalités d\'apprentissage : '+ ${sheet.learningMethod}"></span><br>
 								<span
-									th:text="'Outil du professeur : '+ ${sheet.description.purpose.teacherTools}"></span><br>
-								<span
-									th:text="'Outil des eleves : '+ ${sheet.description.purpose.studentTools}"></span><br>
+									th:text="'Modalités d\'évaluation : '+ ${sheet.grade_rating}"></span><br>
+								<span th:text="'Langue de travail : '+ ${sheet.language}"></span><br>
 							</div>
 						</div>
 					</div>

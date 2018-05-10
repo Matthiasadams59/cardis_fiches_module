@@ -23,4 +23,10 @@ public class SheetService {
 	public Optional<Sheet>  getOneSheet(Integer id) {
 		return (Optional<Sheet>) sheetRepository.findById(id);
 	}
+	public void addSheet(Sheet sheet) {
+		sheetRepository.save(sheet);
+	}
+	public void deleteSheet(Integer id) {
+		sheetRepository.deleteById(id);
+	}
 }

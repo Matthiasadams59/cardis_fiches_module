@@ -41,18 +41,15 @@ public class IndexController {
 
 	    		RestTemplate restTemplate = new RestTemplate();
 	    		User result = restTemplate.getForObject(uri, User.class);
-	    		/*if (result != null && result.getUsername().equals(inputUsername) && result.getPassword().equals(inputPassword)) {
-		    		model.addAttribute("connectError", result.getUsername());
-	    		}
-    			return "index";*/
 	    		
 	    		if (result != null && result.getUsername().equals(inputUsername) && result.getPassword().equals(inputPassword))  {
-    				session.setAttribute("currentUsername", result.getUsername());
+    				//session.setAttribute("currentUser", result);
+	    			
+	    			session.setAttribute("currentUsername", result.getUsername());
     				session.setAttribute("currentUserRole", result.getRole());
+    				session.setAttribute("currentFirstname", result.getFirstname());
+    				
     				return "redirect:/tableau-de-bord";
-	    			//String message = "success";
-	    			//model.addAttribute("connectError", message);
-	    			//return "index";
 	    		} else {
 	    			String message = "";
 	    			model.addAttribute("connectError", message);
