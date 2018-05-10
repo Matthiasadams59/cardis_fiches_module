@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Sheets</title>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -27,16 +27,16 @@
                         <tr>
                             <th><i>Title</i></th>
                             <th><i>Responsable</i></th>
-                            <th><i>Annee Scolaire</i></th>
-                            <th><i>Date de creation</i></th>
+                            <th><i>ECTS</i></th>
+                            <th><i>Mots-clées</i></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="sheet : ${sheets}">
-        					<td><a th:href="@{'/Sheets/' + ${sheet.id}}" th:text="${sheet.title}"></a></td>
+        					<td><a th:href="@{'/sheet/' + ${sheet.id}}" th:text="${sheet.login} +' '+${sheet.title}"></a></td>
         					<td th:text="${sheet.user.firstname} + ' '+ ${sheet.user.lastname}"></td>
-        					<td th:text="${sheet.academicYear}"></td>
-        					<td th:text="${sheet.dateCreation}"></td>
+        					<td th:text="${sheet.ects}"></td>
+        					<td th:text="${sheet.keywords}"></td>
     					</tr>
                     </tbody>
                 </table>   
