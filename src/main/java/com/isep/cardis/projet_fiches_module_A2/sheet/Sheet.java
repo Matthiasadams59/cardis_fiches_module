@@ -41,8 +41,7 @@ public class Sheet {
 	private String bibliography;
 	private String keywords;
 	private boolean isPublished;
-
-
+	
     @ManyToMany()
     @JoinTable(
         name = "course_skills", 
@@ -178,7 +177,7 @@ public class Sheet {
 	public Sheet(Integer id,String title, int ects, String login, String hours, boolean isteamwork, String description,
 			String requirement, String content, String teacherTools, String studentTools, String nextModule,
 			String learningMethod, String grade_rating, String language, String bibliography, String keywords,
-			boolean isPublished, Set<Skill> skills, User user) {
+			boolean isPublished, User user) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -198,7 +197,6 @@ public class Sheet {
 		this.bibliography = bibliography;
 		this.keywords = keywords;
 		this.isPublished = isPublished;
-		this.skills = skills;
 		this.user = user;
 	}
 	public Sheet() {

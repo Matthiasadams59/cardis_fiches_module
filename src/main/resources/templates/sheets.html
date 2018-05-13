@@ -6,10 +6,10 @@
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" th:src="@{sheets.js}"></script>
+<script type="text/javascript" th:src="@{/sheets.js}"></script>
 </head>
 <body>
 	<div class="container">
@@ -48,7 +48,7 @@
 							<td th:text="${sheet.keywords}"></td>
 							<td class="text-center">
 							<a class='btn btn-info btn-xs'
-								href="#"> <span class="glyphicon glyphicon-edit"></span>
+								th:href="@{'/sheet/edit/' + ${sheet.id}}"> <span class="glyphicon glyphicon-edit"></span>
 									Edit
 							</a> <a th:href="@{'/sheet/delete/' + ${sheet.id}}" class="btn btn-danger btn-xs"> <span
 									class="glyphicon glyphicon-remove"></span> Del
