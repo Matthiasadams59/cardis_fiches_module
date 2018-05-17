@@ -4,8 +4,6 @@ package com.isep.cardis.projet_fiches_module_A2.sheet;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.isep.cardis.projet_fiches_module_A2.skill.Skill;
 import com.isep.cardis.projet_fiches_module_A2.skill.SkillService;
@@ -65,12 +64,25 @@ public class SheetController {
 		model.addAttribute("teachers", teachers);
 		return "formSheet";
 	}
-	
-	@PostMapping("/sheet/add")
-	public String createOneSheet(@ModelAttribute Sheet sheet, HttpServletRequest request) {
+	@GetMapping(value= {"/sheet/edit/{id}"})
+	public String editOneSheet(ModelMap model, @PathVariable Integer id) {
+		List<Skill> skills = skillService.getAllSkills();
+		List<User> teachers  = userService.getAllUsersByRole("teacher");
+		Sheet Sheet = sheetService.getOneSheet(id).get();
+		model.addAttribute("sheet", Sheet);
+		model.addAttribute("skills", skills);
+		model.addAttribute("teachers", teachers);
+		return "editSheet";
+	}
+	@PostMapping(value= {"/sheet/update/{id}"})
+	public String editOneUpdate(@ModelAttribute Sheet sheet, @PathVariable Integer id) {
+		sheet.setId(id);
+		sheetService.updateSheet(sheet);
+		return "redirect:/all/sheets";
+	}
+	@PutMapping("/sheet/add")
+	public String createOneSheet(@ModelAttribute Sheet sheet) {
 		sheet.setPublished(false);
-		System.out.println(sheet.getUser());
-		//Optional<User>  responsable = userService.getUser();
 		sheetService.addSheet(sheet);
 		return "redirect:/all/sheets";
 	}
