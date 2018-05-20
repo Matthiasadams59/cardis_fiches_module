@@ -72,11 +72,10 @@
 		    <groupId>org.thymeleaf</groupId>
 		    <artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
-		<!-- Pas de sécurité pour l'instant 
 		<dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-security</artifactId>
-	    </dependency> -->
+	    </dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-jdbc</artifactId>

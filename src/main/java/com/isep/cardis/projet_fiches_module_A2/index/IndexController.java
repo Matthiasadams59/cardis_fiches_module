@@ -22,14 +22,16 @@ public class IndexController {
 
     @GetMapping(value={"", "/", "index"})
     public String index(Model model, HttpSession session) {
-    		String currentUserRole = (String) session.getAttribute("currentUserRole");
+    		return "index";
+    		/*String currentUserRole = (String) session.getAttribute("currentUserRole");
     		if (currentUserRole != null) {
     			return "redirect:/tableau-de-bord";
     		} else {
-    	        return "index";
-    		}
+    	        
+    		}*/
     }
     
+    /*
     @PostMapping(value= {"","/", "index"})
     public String connexion(Model model, HttpServletRequest request, HttpSession session) {
     		
@@ -37,7 +39,7 @@ public class IndexController {
     		String inputPassword = request.getParameter("inputPassword");    		
     		
 		try {	    		
-	    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/users/" + inputUsername);
+	    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "api/users/" + inputUsername);
 
 	    		RestTemplate restTemplate = new RestTemplate();
 	    		User result = restTemplate.getForObject(uri, User.class);
@@ -63,5 +65,6 @@ public class IndexController {
 		}
 
     }
+    */
 
 }
