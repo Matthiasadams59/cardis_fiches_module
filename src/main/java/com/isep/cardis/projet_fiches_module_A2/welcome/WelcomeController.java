@@ -26,9 +26,11 @@ public class WelcomeController {
 
     		RestTemplate restTemplate = new RestTemplate();
     		User result = restTemplate.getForObject(uri, User.class);
+    		String userInfo = restTemplate.getForObject(uri, String.class);
+    		System.out.println(userInfo);
     		
 		if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
-			session.setAttribute("currentUsername", result.getUsername());
+			session.setAttribute("currentFirstname", result.getFirstname());
 			return "welcomeTeacher";
 		} else {
 			return "welcomeStudent";
