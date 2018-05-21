@@ -3,6 +3,7 @@ package com.isep.cardis.projet_fiches_module_A2.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("api/users/{username}")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public User getUser(@PathVariable String username) {
 		return userService.getUser(username);
 	}
