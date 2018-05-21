@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title th:text="${sheet.title}"></title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+
+				<div class="panel-group" id="accordion" role="tablist"
+					aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion"
+									href="#collapseOne" aria-expanded="true"
+									aria-controls="collapseOne"> Information </a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in"
+							role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								<span th:text="'Title : '+ ${sheet.title}"></span><br> <span
+									th:text="'Responsable : '+ ${sheet.user.firstname} + ' ' + ${sheet.user.lastname}"></span><br>
+								<span th:text="'ECTS : '+ ${sheet.ects} + ' crédit(s)'"></span><br>
+								<span th:text="'Identifiant : '+ ${sheet.login}"></span><br>
+								<span th:text="'Mots-clées : '+ ${sheet.keywords}"></span><br>
+								<span th:text="${'Travail en equipe : ' + sheet.isteamwork}"></span><br>
+								<span
+									th:text="'Quantité de travail moyenne par élève : '+ ${sheet.hours}"></span><br>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseTwo"
+									aria-expanded="false" aria-controls="collapseTwo">
+									Présentation </a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="headingTwo">
+							<div class="panel-body">
+								<span th:text="'Présentation : '+ ${sheet.description}"></span><br>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseThree"
+									aria-expanded="false" aria-controls="collapseThree">
+									Objectifs pédagogiques</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="headingThree">
+							<div class="panel-body">
+								<span th:text="'Contenu : '+ ${sheet.content}"></span><br>
+								<span>Compétences dites tranverses : </span><br>
+								<option th:each="skill : ${sheet.skills}"><span
+										th:text="' - ' + ${skill.skill}"></span><br>
+								</option>
+								<span th:text="'Outils des professeurs : '+ ${sheet.teacherTools}"></span><br>
+								<span th:text="'Outils des éléves : '+ ${sheet.studentTools}"></span><br>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseFour"
+									aria-expanded="false" aria-controls="collapseFour">
+									Modalités </a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="headingFour">
+							<div class="panel-body">
+								<span
+									th:text="'Modalités d\'apprentissage : '+ ${sheet.learningMethod}"></span><br>
+								<span
+									th:text="'Modalités d\'évaluation : '+ ${sheet.grade_rating}"></span><br>
+								<span th:text="'Langue de travail : '+ ${sheet.language}"></span><br>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- /.panel-group -->
+
+			</div>
+			<!-- /.col-md-offset-3 col-md-6 -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+</body>
+</html>

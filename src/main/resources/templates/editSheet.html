@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript" th:src="@{/formsheet.js}"></script> 
+<link th:href="@{/CSS/sideBar.css}" rel="stylesheet"/>
+<meta charset="utf-8">
+<title>Formulaire</title>
+</head>
+<body>
+	<aside th:include="fragments/sideBar.html :: aside"> </aside>
+	<div class="container">
+		<form action="#" th:action="@{'/sheet/update/'+${sheet.id}}" th:object="${sheet}"
+			method="post" class="well span8">
+			<div class="row">
+				<div class="span3">
+					<label>Title</label> <input class="span3"
+						placeholder="Your First Name" type="text" th:field="*{title}">
+					<label>Identifiant</label> <input class="span3"
+						placeholder="Identifiant" type="text" th:field="*{login}">
+					<label>ECTS</label> <input class="span3" placeholder="Nombre"
+						type="number" th:field="*{ects}"> <label>Travail
+						d'équipe ?</label> <input class="span3" type="radio"
+						th:value="*{isteamwork}">
+					<div class="span5">
+						<label>Mots-clées : </label>
+						<textarea class="input-xlarge span5" rows="10"
+							th:field="*{keywords}">
+    					</textarea>
+					</div>
+					<label>Choisir le responsable</label>
+				<select class="js-example-basic-single" name="state" id="responsable" th:field="*{user}" th:each="teacher : ${teachers}">
+                    <option th:value="${teacher.id}" th:text="${teacher.firstname} + ' ' + ${teacher.lastname}">
+                    </option> 
+                </select>
+					<div class="span5">
+						<label>Description des heures</label>
+						<textarea class="input-xlarge span5" rows="10" th:field="*{hours}">
+    					</textarea>
+					</div>
+					<label>Présentation du module</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{description}">
+    				</textarea>
+					<label>Prérequis :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{requirement}">
+    				</textarea>
+					<label>Description des outils des professeurs :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{teacherTools}">
+    				</textarea>
+					<label>Description des outils des éléves :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{studentTools}">
+    				</textarea>
+					<label>Contenu :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{content}">
+    				</textarea>
+					<label>Mobilisations ultérieures :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{nextModule}">
+    				</textarea>
+					<label>Méthodes d’apprentissage :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{learningMethod}">
+    				</textarea>
+					<label>Modalités d’évaluation :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{grade_rating}">
+    				</textarea>
+					<label>Langue :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{language}">
+    				</textarea>
+					<label>bibliography :</label>
+					<textarea class="input-xlarge span5" rows="10"
+						th:field="*{bibliography}">
+    				</textarea>
+						<select  th:field="*{skills}"class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: fit-content">
+						<th:block th:each="skill : ${skills}">
+							<option th:value="${skill.id}" th:text="${skill.skill}"> </option>
+  						</th:block>
+						</select>
+					<button class="btn btn-primary pull-right" type="submit" id="send">Send</button>
+				</div>
+		</form>
+	</div>
+</body>
+</html>

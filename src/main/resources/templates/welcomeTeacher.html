@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tableau de bord utilisateur</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" th:src="@{index.js}"></script>   
+</head>
+<body>
+	<div class="container">
+	    <div class="row">
+	    		<div class="col-lg-2">
+	    			<h2><span class="glyphicon glyphicon-file" style="color:purple"><b style="color:black;margin-left:10px">CARDIS</b></span></h2>
+	    		</div>
+	    		<div class="col-lg-8">
+	    		</div>
+	    		<div class="col-lg-2">
+	    		    	<h2><span class="glyphicon glyphicon-education" style="color:orange"><b style="color:black;margin-left:10px">ISEP</b></span></h2>
+	    		</div>
+	    </div>
+        <div class="row" style="margin-top: 80px;">
+        		<div class="col-lg-12">
+        			<div class="well" style="background-color:DodgerBlue;color:white;border:1px solid black">
+        				<h2 class="text-center">Fiches modules</h2>
+        				<p class="text-center">Connecté sous le nom « <span th:text="${session.currentFirstname}" style="text-decoration: underline;"></span> » (<a th:href="@{/logout}">Déconnexion</a>)</p>
+					<div class="row">
+						<div class="col-lg-offset-1 col-lg-10" style="background-color:white;color:black;margin-top:30px">
+							<table class="table">
+							    <thead>
+							      <tr>
+							        <th>Domaine</th>
+							        <th>ID(s)</th>
+							        <th>Nom</th>
+							        <th>Responsable(s)</th>
+							        <th>Crédits</th>
+							        <th>État</th>
+							        <th>Actions</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td>Default</td>
+							        <td>Defaultson</td>
+							        <td>def@somemail.com</td>
+							        <td></td>
+							        <td></td>
+							        <td></td>
+							        <td>Voir / Editer / Supprimer </td>
+							      </tr>      
+							      <tr class="success">
+							        <td>Success</td>
+							        <td>Doe</td>
+							        <td>john@example.com</td>
+							      </tr>
+							      <tr class="danger">
+							        <td>Danger</td>
+							        <td>Moe</td>
+							        <td>mary@example.com</td>
+							      </tr>
+							      <tr class="info">
+							        <td>Info</td>
+							        <td>Dooley</td>
+							        <td>july@example.com</td>
+							      </tr>
+							      <tr class="warning">
+							        <td>Warning</td>
+							        <td>Refs</td>
+							        <td>bo@example.com</td>
+							      </tr>
+							      <tr class="active">
+							        <td>Active</td>
+							        <td>Activeson</td>
+							        <td>act@example.com</td>
+							      </tr>
+							    </tbody>
+							  </table>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+				</div>
+			</div>
+    		</div>
+    </div>
+</body>
+</html>
+
