@@ -1,7 +1,9 @@
 package com.isep.cardis.projet_fiches_module_A2.sheet;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import com.isep.cardis.projet_fiches_module_A2.skill.Skill;
 import com.isep.cardis.projet_fiches_module_A2.skill.SkillService;
 import com.isep.cardis.projet_fiches_module_A2.user.User;
 import com.isep.cardis.projet_fiches_module_A2.user.UserService;
+import com.isep.cardis.projet_fiches_module_A2.pdf.PdfGeneratorUtil;
+import com.isep.cardis.projet_fiches_module_A2.pdf.FileChooser;
 
 @Controller
 public class SheetController {
@@ -27,6 +31,8 @@ public class SheetController {
 	private SkillService skillService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PdfGeneratorUtil PdfGeneratorUtil;
 	
 	@GetMapping(value= {"Sheets", "sheets"})
 	public List<Sheet> getSheetsPublised(ModelMap model) {
@@ -42,7 +48,7 @@ public class SheetController {
 	}
 	
 	@GetMapping(value= {"/sheets/{id}", "/Sheets/{id}", "/Sheet/{id}", "/sheet/{id}"})
-	public String getOneSheet(ModelMap model,@PathVariable Integer id) {
+	public String getOneSheet(ModelMap model,@PathVariable Integer id) throws Exception {
 		Optional<Sheet>  sheet = sheetService.getOneSheet(id);
 		model.addAttribute("sheet", sheet.get());
 		return "sheet";
@@ -73,6 +79,15 @@ public class SheetController {
 		model.addAttribute("skills", skills);
 		model.addAttribute("teachers", teachers);
 		return "editSheet";
+	}
+	@GetMapping(value= {"/sheet/export/{id}"})
+	public String exportOneSheet(ModelMap model, @PathVariable Integer id) throws Exception {
+		Sheet  Sheet = sheetService.getOneSheet(id).get();
+		model.addAttribute("sheet", Sheet);
+		Map<String,Sheet> data = new HashMap<String,Sheet>();
+	    data.put("sheet",Sheet);
+	    PdfGeneratorUtil.createPdf("sheet", data, Sheet);
+	    return "export";
 	}
 	@PostMapping(value= {"/sheet/update/{id}"})
 	public String editOneUpdate(@ModelAttribute Sheet sheet, @PathVariable Integer id) {
