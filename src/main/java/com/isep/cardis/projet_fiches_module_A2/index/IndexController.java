@@ -8,11 +8,13 @@ import javax.print.DocFlavor.URL;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.isep.cardis.projet_fiches_module_A2.user.User;
@@ -20,14 +22,19 @@ import com.isep.cardis.projet_fiches_module_A2.user.User;
 @Controller
 public class IndexController {
 
-    @GetMapping(value={"", "/", "index"})
-    public String index(Model model, HttpSession session) {
+    @RequestMapping(value={"", "/", "index"}, method = { RequestMethod.GET, RequestMethod.POST })
+    public String index(Model model, HttpServletRequest request, Authentication authentication) {
     		return "index";
-    		/*String currentUserRole = (String) session.getAttribute("currentUserRole");
-    		if (currentUserRole != null) {
+    		/*if (authentication.isAuthenticated()) {
     			return "redirect:/tableau-de-bord";
     		} else {
-    	        
+    			return "index";
+    		}*/
+    		/*String currentUser = request.getUserPrincipal().getName();
+    		if (currentUser != null) {
+    			return "redirect:/tableau-de-bord";
+    		} else {
+    	        return "index";
     		}*/
     }
     
