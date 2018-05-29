@@ -47,7 +47,7 @@ import com.isep.cardis.projet_fiches_module_A2.user.User;
 public class WelcomeController {
 	
     @GetMapping(value={"tableau-de-bord"})
-    public String welcome(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws URISyntaxException {    		
+    public String welcome(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) throws URISyntaxException {    		
     		
     		if (request.isUserInRole("ADMIN")) {
 	    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/api/users/" + request.getUserPrincipal().getName());
@@ -64,7 +64,10 @@ public class WelcomeController {
 	        ResponseEntity<User> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, User.class);
 	        
 	        User currentUser = raiponce.getBody();
+	        String vincent = "test23";
+	        model.addAttribute("vincent", vincent);
 	        session.setAttribute("currentFirstname", currentUser.getFirstname());
+	        
     		}
     		
 		if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
