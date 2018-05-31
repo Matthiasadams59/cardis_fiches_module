@@ -49,27 +49,23 @@ public class WelcomeController {
     @GetMapping(value={"tableau-de-bord"})
     public String welcome(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) throws URISyntaxException {    		
     		
-    		//if (request.isUserInRole("ADMIN")) {
-	    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/api/users/" + request.getUserPrincipal().getName());
-	    		
-	    		RestTemplate restTemplate = new RestTemplate();          
-	    		CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-	    		Cookie cookie = WebUtils.getCookie(request, "SESSION");
-	    		    		
-	    	    HttpHeaders csrfHeaders = new HttpHeaders();
-	    	    csrfHeaders.add(csrf.getHeaderName(), csrf.getToken());
-	    	    csrfHeaders.add("Cookie", "SESSION="+cookie.getValue());
-	    	    
-	        HttpEntity<String> requestEntity = new HttpEntity<>("headers",csrfHeaders);
-	        /*ResponseEntity<User> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, User.class);
-	        User currentUser = raiponce.getBody();
-	        session.setAttribute("currentFirstname", currentUser.getFirstname());*/
-	        
-	        ResponseEntity<String> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
-	        System.out.println(raiponce);
-	        
-	        
-    		//}
+    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/api/users/" + request.getUserPrincipal().getName());
+    		
+    		RestTemplate restTemplate = new RestTemplate();          
+    		CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+    		Cookie cookie = WebUtils.getCookie(request, "SESSION");
+    		    		
+    	    HttpHeaders csrfHeaders = new HttpHeaders();
+    	    csrfHeaders.add(csrf.getHeaderName(), csrf.getToken());
+    	    csrfHeaders.add("Cookie", "SESSION="+cookie.getValue());
+    	    
+        HttpEntity<String> requestEntity = new HttpEntity<>("headers",csrfHeaders);
+        ResponseEntity<User> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, User.class);
+        User currentUser = raiponce.getBody();
+        session.setAttribute("currentFirstname", currentUser.getFirstname());
+        
+        //ResponseEntity<String> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+        //System.out.println(raiponce);
     		
 		if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
 			return "welcomeTeacher";
