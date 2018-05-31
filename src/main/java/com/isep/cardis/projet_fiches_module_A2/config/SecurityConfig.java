@@ -28,6 +28,7 @@ import com.isep.cardis.projet_fiches_module_A2.user.UserService;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
@@ -49,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		                grantedAuthority.add(new SimpleGrantedAuthority("ROLE_TEACHER"));
 		            }
 		            grantedAuthority.add(new SimpleGrantedAuthority("ROLE_USER"));
-		            User user = new User(userService.getUser(username).getUsername(), bCryptPasswordEncoder().encode(userService.getUser(username).getPassword()), grantedAuthority);
-                    return user;
+		            User userSpring = new User(userService.getUser(username).getUsername(), bCryptPasswordEncoder().encode(userService.getUser(username).getPassword()), grantedAuthority);
+                    return userSpring;
         }).passwordEncoder(bCryptPasswordEncoder());
     }
 	
@@ -62,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().and()
 		        .authorizeRequests()
 		        		.antMatchers("/webjars/**").permitAll()
-		        		.antMatchers("/api/**").hasRole("ADMIN")
+		        		.antMatchers("/api/users/").hasRole("ADMIN")
 		        		.anyRequest().authenticated()
 		            .and()
 		        .formLogin()

@@ -1,9 +1,11 @@
 package com.isep.cardis.projet_fiches_module_A2.user;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,6 +20,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	//private Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 	@GetMapping("api/users")
 	public List<User> getAllUsers() {
@@ -26,8 +29,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("api/users/{username}")
-	@ResponseBody
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or #username == authentication.name")
 	public User getUser(@PathVariable String username) {
 		return userService.getUser(username);
 	}
@@ -38,6 +40,7 @@ public class UserController {
 	}
 	
 	@PutMapping("api/users/{username}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or #username == authentication.name")
 	public void updateUser(@RequestBody User user) {
 		userService.updateUser(user);
 	}

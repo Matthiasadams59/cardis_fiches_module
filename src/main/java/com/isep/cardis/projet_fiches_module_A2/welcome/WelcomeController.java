@@ -49,7 +49,7 @@ public class WelcomeController {
     @GetMapping(value={"tableau-de-bord"})
     public String welcome(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) throws URISyntaxException {    		
     		
-    		if (request.isUserInRole("ADMIN")) {
+    		//if (request.isUserInRole("ADMIN")) {
 	    		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/api/users/" + request.getUserPrincipal().getName());
 	    		
 	    		RestTemplate restTemplate = new RestTemplate();          
@@ -61,14 +61,15 @@ public class WelcomeController {
 	    	    csrfHeaders.add("Cookie", "SESSION="+cookie.getValue());
 	    	    
 	        HttpEntity<String> requestEntity = new HttpEntity<>("headers",csrfHeaders);
-	        ResponseEntity<User> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, User.class);
-	        
+	        /*ResponseEntity<User> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, User.class);
 	        User currentUser = raiponce.getBody();
-	        String vincent = "test23";
-	        model.addAttribute("vincent", vincent);
-	        session.setAttribute("currentFirstname", currentUser.getFirstname());
+	        session.setAttribute("currentFirstname", currentUser.getFirstname());*/
 	        
-    		}
+	        ResponseEntity<String> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
+	        System.out.println(raiponce);
+	        
+	        
+    		//}
     		
 		if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
 			return "welcomeTeacher";
