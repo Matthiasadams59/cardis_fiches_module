@@ -6,7 +6,34 @@
     <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" th:src="@{index.js}"></script>   
+    
+    	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	<meta name="_csrf_parameter" th:content="${_csrf.parameterName}"/>
+	
+	<script type="text/javascript">
+		/*
+		var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
+		var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+		var csrfToken = $("meta[name='_csrf']").attr("content");
+		
+		console.log(csrfParameter);
+		console.log(csrfHeader);
+		console.log(csrfToken);
+		
+		var headers = {};
+		headers[csrfHeader] = csrfToken;
+		$.ajax({
+			url: "http://localhost:8080/api/users/dmutombo",
+			type: "GET",
+			headers: headers,
+			success: function(reponse) {
+				console.log(reponse);
+			}
+		});*/
+
+	</script>
+    
 </head>
 <body>
 	<div class="container">
@@ -24,7 +51,7 @@
         		<div class="col-lg-12">
         			<div class="well" style="background-color:DodgerBlue;color:white;border:1px solid black">
         				<h2 class="text-center">Fiches modules</h2>
-        				<p class="text-center">Connecté sous le nom « <span th:text="${session.currentFirstname}" style="text-decoration: underline;"></span> » (<a th:href="@{/logout}">Déconnexion</a>)</p>
+        				<p class="text-center">Connecté sous le nom de « <span th:text="${vincent}" style="text-decoration: underline;"></span> » (<a th:href="@{/logout}">Déconnexion</a>)</p>
 					<div class="row">
 						<div class="col-lg-offset-1 col-lg-10" style="background-color:white;color:black;margin-top:30px">
 							<table class="table">

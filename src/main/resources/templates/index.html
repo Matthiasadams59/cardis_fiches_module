@@ -27,16 +27,16 @@
         				<h2 class="text-center">Connexion</h2>
 					<form class="form-horizontal" th:action="@{/}" method="post" style="margin-top:30px; margin-bottom: 60px">
 					  <div class="form-group">
-					    <label for="inputUsername" class="col-lg-3 control-label">Identifiant :</label>
+					    <label for="username" class="col-lg-3 control-label">Identifiant :</label>
 					    <div class="col-lg-7">
-					      <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Identifiant" required>
+					      <input type="text" class="form-control" id="username" name="username" placeholder="Identifiant" required>
 					    </div>
 					    <div class="col-lg-2"></div>
 					  </div>
 					  <div class="form-group">
-					    <label for="inputPassword" class="col-lg-3 control-label">Mot de passe :</label>
+					    <label for="password" class="col-lg-3 control-label">Mot de passe :</label>
 					    <div class="col-lg-7">
-					      <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Mot de passe" required>
+					      <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
 					    </div>
 					    <div class="col-lg-2"></div>					    
 					  </div>
@@ -52,11 +52,11 @@
 					      	<button type="submit" id="btn-login" class="btn btn-default">Se connecter</button>
 					    	  </div>
 					  </div>
-					  <div class="col-lg-offset-4 col-lg-8" th:if="${connectError}">
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${param.error}">
 							<p><b style="color:FireBrick;">Connexion échouée!</b></p>
-							<p th:text="${connectError}"></p>
+							<p th:text="${param.error}"></p>
 					  </div>
-					  <div class="col-lg-offset-4 col-lg-8" th:if="${logoutSuccess}">
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${param.logout}">
 							<p><b style="color: blue">Déconnexion réussie!</b></p>
 						</div>
 					  </div>
