@@ -24,12 +24,12 @@ Pour les différents acteurs de l'enseignement, qui ont besoin de simplifier la 
 
 ## Authors
 
-Ali Taïga Matthias-Adams
-Zhou Patrick
-Wang Jimmy
-Dumas Théo
-Lecorre Quentin
-Lesage Nicolas
+Ali Taïga Matthias-Adams  
+Zhou Patrick  
+Wang Jimmy  
+Dumas Théo  
+Lecorre Quentin  
+Lesage Nicolas  
 
 ### Note that :
 
