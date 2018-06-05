@@ -18,7 +18,8 @@ Pour les différents acteurs de l'enseignement, qui ont besoin de simplifier la 
 
 ## Built with
 
-* Spring Boot
+* Spring Boot  
+* Spring Security
 * Bootstrap
 * JQuery
 
