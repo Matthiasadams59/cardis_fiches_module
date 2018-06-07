@@ -54,7 +54,9 @@
 									Edit
 							</a> <a th:href="@{'/sheet/delete/' + ${sheet.id}}" class="btn btn-danger btn-xs"> <span
 									class="glyphicon glyphicon-remove"></span> Del
-							</a></td>
+							</a> <a class='btn btn-info btn-xs'
+									th:href="@{'/sheet/export/' + ${sheet.id}}"> <span class="glyphicon glyphicon-edit"></span>
+									Export</td>
 						</tr>
 					</tbody>
 				</table>
