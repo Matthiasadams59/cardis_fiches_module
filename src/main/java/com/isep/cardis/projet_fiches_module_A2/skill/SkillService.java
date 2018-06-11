@@ -14,4 +14,12 @@ public class SkillService {
 	public List<Skill> getAllSkills() {
 		return (List<Skill>) skillRepository.findAll();
 	}
+	
+	public void addSkill(Skill skill){
+		skillRepository.save(skill);
+	}
+	
+	public void deleteSkill(Integer id){
+		skillRepository.deleteById(id);
+	}
 }
