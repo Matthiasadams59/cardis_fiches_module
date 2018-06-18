@@ -34,7 +34,7 @@ public class UserController {
 		return userService.getUser(username);
 	}
 	
-	@PostMapping("api/users")
+	@PostMapping(value={"api/users", "api/users/"})
 	public void addUser(@RequestBody User user) {
 		userService.addUser(user);
 	}
@@ -49,5 +49,5 @@ public class UserController {
 	public void deleteUser(@PathVariable String username) {
 		userService.deleteUser(username);
 	}
-
+	
 }
