@@ -18,7 +18,7 @@ body {
 	border-bottom-style: solid;
 	border-width: 3px;
 	border-color: #264597;
-	}
+}
 
 .logo {
 	width: 18%;
@@ -74,8 +74,13 @@ body {
 	color: #fff;
 }
 
+.logoPlacement {
+	display: inline-block;
+}
+
 .topSearch {
-	float: right;
+	/*display: inline-block;
+	float: right;*/
 	margin-right:2%;
 	margin-left:50%;
 	margin-top: 0.5%;
