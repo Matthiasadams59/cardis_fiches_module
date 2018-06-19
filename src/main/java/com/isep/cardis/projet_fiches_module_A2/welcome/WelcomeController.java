@@ -69,11 +69,12 @@ public class WelcomeController {
         //ResponseEntity<String> raiponce = restTemplate.exchange(uri, HttpMethod.GET, requestEntity, String.class);
         //System.out.println(raiponce);
     		
-		if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
+		/*if (request.isUserInRole("TEACHER") || request.isUserInRole("ADMIN")) {
 			return "welcomeTeacher";
 		} else {
 			return "welcomeStudent";
-		}
+		}*/
+        return "sheets";
     }
 
 }
