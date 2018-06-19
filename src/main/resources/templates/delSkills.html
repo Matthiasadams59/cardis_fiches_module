@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Sheets</title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/sheets.js}"></script>
+<link th:href="@{/CSS/sideBar.css}" rel="stylesheet" />
+</head>
+<body>
+	<aside th:include="fragments/sideBar.html :: aside"></aside>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<form action="#" method="get">
+					<div class="input-group">
+						<input class="form-control" id="system-search" name="q"
+							placeholder="Search for" required> <span
+							class="input-group-btn">
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-9">
+				<table class="table table-list-search">
+					<thead>
+						<tr>
+							<th><i>Skill</i></th>
+							<th style="width: 20%"><i>Actions</i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="skill : ${skills}">
+							<td><a th:text="${skill.skill}"></a></td>
+
+							<td class="text-center"><a
+								th:href="@{'/skill/delete/' + ${skill.id}}"
+								class="btn btn-danger btn-xs"> <span
+									class="glyphicon glyphicon-remove"></span> Del
+							</a>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -8,11 +8,13 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	
 <meta charset="utf-8">
 <link th:href="@{/CSS/sideBar.css}" rel="stylesheet"/>
 </head>
 <body>
 	<aside>
+<<<<<<< HEAD
 			<nav class="nav-sidebar">
 				<ul class="nav">
 					<li><a href="javascript:;"> Accueil </a></li>
@@ -32,6 +34,36 @@
 					
 				</ul>
 			</nav>
+=======
+		<nav class="nav-sidebar">
+			<ul class="nav">
+				<li><a href="javascript:;"> Accueil </a></li>
+				<li class="nav-divider"></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>
+						Fiches modules <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{/all/sheets}">Voir tous les fiches
+								modules</a></li>
+						<li><a th:href="@{/sheets}">Voir tous les fiches modules
+								publiées</a></li>
+						<li><a th:href="@{/sheet/create}">Créer une fiche module</a></li>
+					</ul></li>
+				<li class="nav-divider"></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>
+						Plus <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					<li><a th:href="@{/Skill}">Ajouter des compétences</a></li>
+	                   <li><a th:href="@{/skills/all}">Supprimer des compétences</a></li>
+					</ul></li>
+					<li><a th:href="@{/logout}"><i
+						class="glyphicon glyphicon-off"></i> Déconnexion </a></li>
+				<li class="nav-divider"></li>
+			</ul>
+	      			<p class="text-center">Connecté sous le nom de « <span th:text="${session.currentFirstname}" style="text-decoration: underline;"></span> » (<a th:href="@{/logout}">Déconnexion</a>)</p>
+		</nav>
+>>>>>>> 71de34450ecd10ba6edaffe96460bb6b8b52a2ea
 	</aside>
 </body>
 </html>
