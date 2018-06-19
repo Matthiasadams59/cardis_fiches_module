@@ -6,28 +6,11 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link th:href="@{/CSS/sideBarV2.css}" rel="stylesheet"/>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<<<<<<< HEAD
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <link th:href="@{sheets.js}" rel="js"/>
-=======
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<script>
-$(document).ready(function(){
-	$('a[href="#search"]').on('click', function(event) {                    
-		$('#search').addClass('open');
-		$('#search > form > input[type="search"]').focus();
-	});            
-	$('#search, #search button.close').on('click keyup', function(event) {
-		if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-			$(this).removeClass('open');
-		}
-	});            
-});
-</script>
->>>>>>> 71de34450ecd10ba6edaffe96460bb6b8b52a2ea
 
 </head>
 
