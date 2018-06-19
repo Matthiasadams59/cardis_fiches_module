@@ -1,7 +1,7 @@
 html {
-	/*height: 100% !important;
-	width: 100% !important;*/
-	overflow-y: hidden;
+	height: 100% !important;
+	width: 100% !important;
+	/*overflow-y: hidden;*/
 	/* overflow-x: hidden; */
 	font-family: Roboto;
   	font-weight: 300;
@@ -10,7 +10,6 @@ html {
 body {
 	min-height: 100% !important;
 	font-size: 18px;
-
 }
 
 .header {
@@ -22,12 +21,14 @@ body {
 	}
 
 .logo {
-	width: 20%;
-    margin-top: 5px;
+	width: 18%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .aside {
-	/*height: 100% !important;*/
+	height: 100% !important;
+	position:fixed;
 }
 
 .col-sm-2 {
@@ -201,6 +202,11 @@ a:link{
 #search .close:hover{
   color: #974292;
   cursor: pointer;
+}
+
+.row{
+	margin-left:0;
+	margin-right:0;
 }
 
 
