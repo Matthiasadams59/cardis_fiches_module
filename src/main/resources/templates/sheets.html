@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/">
 <head>
 <meta charset="utf-8">
 <title>Sheets</title>
@@ -34,14 +34,14 @@
 						</form>
 					</div>
 					<div class="col-sm-12">
-						<table class="table table-list-search" style="width: 100%">
+						<table class="table table-list-search" style="width:100%">
 							<thead>
 								<tr>
-									<th style="padding-right: 30%;"><i>Title</i></th>
-									<th style="padding-right: 20%;"><i>Responsable</i></th>
-									<th style="padding-right: 25%;"><i>ECTS</i></th>
-									<th style="padding-right: 15%;"><i>Mots-clées</i></th>
-									<th style="padding-right: 10%;"><i>Actions</i></th>
+									<th><i>Title</i></th>
+									<th><i>Responsable</i></th>
+									<th><i>ECTS</i></th>
+									<th><i>Mots-clées</i></th>
+									<div sec:authorize="hasRole('ROLE_TEACHER')"><th><i>Actions</i></th></div>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,13 +52,13 @@
 										th:text="${sheet.user.firstname} + ' '+ ${sheet.user.lastname}"></td>
 									<td th:text="${sheet.ects}"></td>
 									<td th:text="${sheet.keywords}"></td>
-									<td class="text-center">
+									<div sec:authorize="hasRole('ROLE_TEACHER')"><td class="text-center" >
 									<a class='btn btn-info btn-xs'
 										th:href="@{'/sheet/edit/' + ${sheet.id}}"> <span class="glyphicon glyphicon-edit"></span>
 											Edit
 									</a> <a th:href="@{'/sheet/delete/' + ${sheet.id}}" class="btn btn-danger btn-xs"> <span
 											class="glyphicon glyphicon-remove"></span> Del
-									</a></td>
+									</a></td></div>
 								</tr>
 							</tbody>
 						</table>

@@ -49,7 +49,7 @@ public class WelcomeController {
     @GetMapping(value={"tableau-de-bord"})
     public String welcome(HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model, Authentication authentication) throws URISyntaxException {    		
     		
-    		authentication.getCredentials()
+    		//authentication.getCredentials()
     	
     		final URI uri = new URI("http://localhost:" + request.getLocalPort() + "/api/users/" + request.getUserPrincipal().getName());
     		
