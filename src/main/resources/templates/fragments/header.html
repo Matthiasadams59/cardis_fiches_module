@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -7,10 +7,11 @@
 </head>
 <body>
 	<header class="header">
-		<div class="logoPlacement">
-			<img class="logo" src="/images/Cardis-logo.png" alt="Cardis ISEP" />
-
-			<div class="topSearch">
+			<div class="logoPlacement">
+				<img class="logo logoPlacement" src="/images/Cardis-logo.png" alt="Cardis ISEP" />
+			</div>
+	
+			<div class="topSearch" style="display:inline-block">
 				<form action="#" method="get">
 					<div class="input-group">
 						<input class="form-control" id="system-search" name="q"
@@ -23,7 +24,6 @@
 					</div>
 				</form>
 			</div>
-		</div>
 
 	</header>
 </body>
