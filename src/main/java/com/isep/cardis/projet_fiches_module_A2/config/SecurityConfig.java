@@ -34,10 +34,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
     
-    @Autowired
+    /*@Autowired
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }*/
+    
+    @Bean
+	public BCryptPasswordEncoder passwordEncoder(){
+    		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
+    
+    @Autowired
+    private BCryptPasswordEncoder encoder;
         
     @Autowired
     protected void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,9 +59,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		                grantedAuthority.add(new SimpleGrantedAuthority("ROLE_TEACHER"));
 		            }
 		            grantedAuthority.add(new SimpleGrantedAuthority("ROLE_USER"));
-		            User userSpring = new User(userService.getUser(username).getUsername(), bCryptPasswordEncoder().encode(userService.getUser(username).getPassword()), grantedAuthority);
-                    return userSpring;
-        }).passwordEncoder(bCryptPasswordEncoder());
+		            User userSpring = new User(userService.getUser(username).getUsername(), encoder.encode(userService.getUser(username).getPassword()), grantedAuthority);
+		            System.out.println(encoder.encode(userService.getUser(username).getPassword()));
+		            //User userSpring = new User(userService.getUser(username).getUsername(), userService.getUser(username).getPassword(), grantedAuthority);
+		            return userSpring;
+        }).passwordEncoder(encoder);
     }
 	
     @Override
@@ -63,6 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().and()
 		        .authorizeRequests()
 		        		.antMatchers("/webjars/**").permitAll()
+		        		.antMatchers("/api/users").hasRole("ADMIN")
 		        		.antMatchers("/api/users/").hasRole("ADMIN")
 		        		.anyRequest().authenticated()
 		            .and()

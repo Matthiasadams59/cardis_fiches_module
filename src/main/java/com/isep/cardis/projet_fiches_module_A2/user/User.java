@@ -1,6 +1,6 @@
 package com.isep.cardis.projet_fiches_module_A2.user;
 
-import javax.persistence.Entity;
+import javax.persistence.Entity; 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
