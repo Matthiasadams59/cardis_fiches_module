@@ -17,8 +17,9 @@
 <body>
 	<aside th:include="fragments/sideBar.html :: aside"> </aside>
 	<div class="container">
-		<form action="#" th:action="@{/sheet/add}" th:object="${sheet}"
-			th:method="put" class="well span8">
+		<form action="#" th:action="@{'/sheet/update/'+${sheet.id}}" th:object="${sheet}"
+			method="post" class="well span8">
+			<div class="row">
 				<div class="span3">
 					<label>Title</label> <input class="span3"
 						placeholder="Your First Name" type="text" th:field="*{title}">

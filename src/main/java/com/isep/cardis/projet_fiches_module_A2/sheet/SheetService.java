@@ -26,6 +26,9 @@ public class SheetService {
 	public void addSheet(Sheet sheet) {
 		sheetRepository.save(sheet);
 	}
+	public void updateSheet(Sheet sheet) {
+		sheetRepository.save(sheet);
+	}
 	public void deleteSheet(Integer id) {
 		sheetRepository.deleteById(id);
 	}

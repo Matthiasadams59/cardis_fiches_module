@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Skills</title>
+	<link th:href="@{/CSS/EditSkill.css}" rel="stylesheet"/>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<link th:href="@{/CSS/sideBar.css}" rel="stylesheet"/>
+</head>
+<body>
+<aside th:include="fragments/sideBar.html :: aside"> </aside>
+	<div class="container">
+	<div class="row">
+        <div class="control-group" id="fields">
+            <label class="control-label" for="field1">Ajouter des compétences</label>
+            <div class="controls"> 
+                <form th:action="@{/skill/add}" th:method="put">
+                    <div class="entry input-group form-group col-xs-3">
+                        <input type="text" class="form-control" placeholder="Nouvelle compétence" name="Input"/>
+                    </div>
+                    <br>
+                        <input type="submit" id="enregistrer"/>
+                </form>
+
+            </div>
+        </div>
+	</div>
+</div>
+</body>
+</html>

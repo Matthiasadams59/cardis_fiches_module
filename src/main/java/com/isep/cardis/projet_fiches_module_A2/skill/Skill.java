@@ -17,18 +17,20 @@ public class Skill {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
 	private String skill;
 	
 	@ManyToMany(mappedBy = "skills")
 	private Set<Sheet> sheets = new HashSet<>();;
 	
 	
-	public Skill(String skill, Set<Sheet> sheet) {
+	public Skill(Integer id,String skill) {
 		super();
+		this.id = id;
 		this.skill = skill;
-		this.sheets = sheet;
+		//this.sheets = sheet;
 	}
-
+	
 	public Set<Sheet> getSheets() {
 		return sheets;
 	}
