@@ -97,11 +97,11 @@ public class SheetController {
 	}
 	@GetMapping(value= {"/sheet/export/{id}"})
 	public String exportOneSheet(ModelMap model, @PathVariable Integer id, HttpServletResponse response) throws Exception {
-		Sheet  Sheet = sheetService.getOneSheet(id).get();
+		Sheet Sheet = sheetService.getOneSheet(id).get();
 		model.addAttribute("sheet", Sheet);
 		Map<String,Sheet> data = new HashMap<String,Sheet>();
 	    data.put("sheet",Sheet);
-	    PdfGeneratorUtil.createPdf("sheet", data, Sheet);
+	    PdfGeneratorUtil.createPdf("export", data, Sheet);
 	    PdfGeneratorUtil.DownloadPDF(response, Sheet);
 	    return "export";
 	}
