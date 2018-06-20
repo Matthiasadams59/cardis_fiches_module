@@ -93,8 +93,9 @@ public class SheetController {
 		model.addAttribute("sheet", Sheet);
 		model.addAttribute("skills", skills);
 		model.addAttribute("teachers", teachers);
-		return "editSheet";
+		return "editSheet2";
 	}
+	
 	@GetMapping(value= {"/sheet/export/{id}"})
 	public String exportOneSheet(ModelMap model, @PathVariable Integer id, HttpServletResponse response) throws Exception {
 		Sheet Sheet = sheetService.getOneSheet(id).get();
