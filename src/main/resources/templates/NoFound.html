@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<title th:text="${sheet.title}"></title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+	
+<link th:href="@{/CSS/sideBarV2.css}" rel="stylesheet"/>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<header th:include="fragments/header.html :: header"> </header>
+		<div class="col-sm-2">
+				<aside th:include="fragments/sideBar.html :: aside"> </aside>
+		</div>
+	<div class="container">
+		<span th:text="'Probleme : '+ ${message}"></span><br></br>
+	</div>
+	<!-- /.container -->
+</body>
+</html>
