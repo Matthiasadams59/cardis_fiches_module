@@ -34,34 +34,35 @@
 							</div>
 						</form> --> 
 					</div>
-					<div class="col-sm-12">
-						<table class="table table-list-search" style="width:100%">
-							<thead>
-								<tr>
-
-									<th style="padding-right: 20%;"><i>Title</i></th>
-									<th><i>Responsable</i></th>
-									<th><i>ECTS</i></th>
-									<th><i>Mots-clées</i></th>
-									<div sec:authorize="hasRole('ROLE_TEACHER')"><th><i>Actions</i></th></div>
-
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="sheet : ${sheets}">
-									<td><a th:href="@{'/sheet/' + ${sheet.id}}"
-										th:text="${sheet.login} +' '+${sheet.title}"></a></td>
-									<td
-										th:text="${sheet.user.firstname} + ' '+ ${sheet.user.lastname}"></td>
-									<td th:text="${sheet.ects}"></td>
-									<td th:text="${sheet.keywords}"></td>
-									<div sec:authorize="hasRole('ROLE_TEACHER')"><td class="text-center" >
-									<a class='btn btn-info btn-xs'
-										th:href="@{'/sheet/edit/' + ${sheet.id}}"> <span class="glyphicon glyphicon-edit"></span>
-											Edit
-									</a> <a th:href="@{'/sheet/delete/' + ${sheet.id}}" class="btn btn-danger btn-xs"> <span
-											class="glyphicon glyphicon-remove"></span> Del
-									</a><a class='btn btn-info btn-xs'
+				</form>
+			</div>
+			<div class="col-md-9">
+				<table class="table table-list-search">
+					<thead>
+						<tr>
+							<th><i>Title</i></th>
+							<th><i>Responsable</i></th>
+							<th><i>ECTS</i></th>
+							<th><i>Mots-clées</i></th>
+							<div sec:authorize="hasRole('ROLE_ADMIN')">
+							<th style="width:20%"><i>Actions</i></th></div>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sheet : ${sheets}">
+							<td><a th:href="@{'/sheet/' + ${sheet.id}}"
+								th:text="${sheet.login} +' '+${sheet.title}"></a></td>
+							<td
+								th:text="${sheet.user.firstname} + ' '+ ${sheet.user.lastname}"></td>
+							<td th:text="${sheet.ects}"></td>
+							<td th:text="${sheet.keywords}"></td>
+							<td class="text-center">
+							<a class='btn btn-info btn-xs'
+								th:href="@{'/sheet/edit/' + ${sheet.id}}"> <span class="glyphicon glyphicon-edit"></span>
+									Edit
+							</a> <a th:href="@{'/sheet/delete/' + ${sheet.id}}" class="btn btn-danger btn-xs"> <span
+									class="glyphicon glyphicon-remove"></span> Del
+							</a> <a class='btn btn-info btn-xs'
 									th:href="@{'/sheet/export/' + ${sheet.id}}"> <span class="glyphicon glyphicon-export"></span>
 									Export</a></td></div>
 								</tr>
