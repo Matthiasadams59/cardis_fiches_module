@@ -83,7 +83,7 @@ public class SheetController {
 		model.addAttribute("sheet", newSheet);
 		model.addAttribute("skills", skills);
 		model.addAttribute("teachers", teachers);
-		return "formSheet";
+		return "formSheet2";
 	}
 	@GetMapping(value= {"/sheet/edit/{id}"})
 	public String editOneSheet(ModelMap model, @PathVariable Integer id) {

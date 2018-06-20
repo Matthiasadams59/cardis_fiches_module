@@ -24,7 +24,7 @@ public class IndexController {
 
     @RequestMapping(value={"", "/", "index"}, method = { RequestMethod.GET, RequestMethod.POST })
     public String index(Model model, HttpServletRequest request, Authentication authentication) {
-    		return "index";
+    		return "index2";
     		/*if (authentication.isAuthenticated()) {
     			return "redirect:/tableau-de-bord";
     		} else {

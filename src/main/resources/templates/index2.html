@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Connexion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/index2.css}">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-light fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="navbar-brand header_logo_nav">
+					<img class="logo_nav" th:src="@{/images/Cardis-logo.png}" alt="logo">
+				</div>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="navbar-nav float-right">
+					<img class="logo-isep-nav" th:src="@{/images/logo_isep.png}" alt="logo-isep">
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="col-lg-8 col-lg-offset-2">
+	 	 	<div class="card">
+	    		<h1 class="title">Connexion</h1>
+	    		<form th:action="@{/}" method="post">
+		      		<div class="input-container">
+				        <input type="text" id="username" name="username" required="required"/>
+				        <label for="username">Identifiant</label>
+				        <div class="bar"></div>
+		      		</div>
+				    <div class="input-container">
+				    	<input type="password" id="password" name="password" required="required"/>
+				        <label for="password">Password</label>				        
+				        <div class="bar"></div>
+				     </div>
+				     <div class="col-lg-8 col-lg-offset-2">
+					     <div class="button-container">
+					        <button type="submit" id="btn-login" class="btn btn-primary btn-lg">Se connecter</button>
+					     </div>
+				     </div>
+				     <div style="text-align:center" th:if="${param.error}">
+							<p><b style="color:FireBrick;">Connexion échouée!</b></p>
+							<p th:text="${connectError}"></p>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${param.logout}">
+							<p><b style="color: blue">Déconnexion réussie!</b></p>
+					  </div>
+		    	</form>
+		    </div>
+		</div>
+  	</div>
+	
+    <!-- <div class="container">
+	    <div class="row">
+	    		<div class="col-lg-2">
+	    			<h2><span class="glyphicon glyphicon-file" style="color:purple"><b style="color:black;margin-left:10px">CARDIS</b></span></h2>
+	    		</div>
+	    		<div class="col-lg-8">
+	    		</div>
+	    		<div class="col-lg-2">
+	    		    	<h2><span class="glyphicon glyphicon-education" style="color:orange"><b style="color:black;margin-left:10px">ISEP</b></span></h2>
+	    		</div>
+	    </div>
+        <div class="row" style="margin-top: 125px;">
+        		<div class="col-lg-2"></div>
+        		<div class="col-lg-8">
+        			<div class="well" style="background-color:DodgerBlue;color:white;border:1px solid black">
+        				<h2 class="text-center">Connexion</h2>
+					<form class="form-horizontal" th:action="@{/}" method="post" style="margin-top:30px; margin-bottom: 60px">
+					  <div class="form-group">
+					    <label for="inputUsername" class="col-lg-3 control-label">Identifiant :</label>
+					    <div class="col-lg-7">
+					      <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Identifiant" required>
+					    </div>
+					    <div class="col-lg-2"></div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputPassword" class="col-lg-3 control-label">Mot de passe :</label>
+					    <div class="col-lg-7">
+					      <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Mot de passe" required>
+					    </div>
+					    <div class="col-lg-2"></div>					    
+					  </div>
+					  <div class="form-group" style="margin-top:30px">
+					    <div class="col-lg-offset-3 col-lg-3">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox"> Se souvenir de moi
+					        </label>
+					      </div>
+					    </div>
+					    <div class="col-lg-4">
+					      	<button type="submit" id="btn-login" class="btn btn-default">Se connecter</button>
+					    	  </div>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${connectError}">
+							<p><b style="color:FireBrick;">Connexion échouée!</b></p>
+							<p th:text="${connectError}"></p>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-8" th:if="${logoutSuccess}">
+							<p><b style="color: blue">Déconnexion réussie!</b></p>
+						</div>
+					  </div>
+					  <div class="col-lg-offset-4 col-lg-8" style="margin-top:10px;">
+					  	<a href="javascript:;"><b>Mot de passe oublié?</b></a>
+					  </div>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+    		</div>
+    </div> -->
+</body>
+</html>
+
