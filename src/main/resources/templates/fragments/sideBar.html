@@ -14,35 +14,35 @@
 </head>
 <body>
 	<aside>
-	        <div class="col-sm-2">
-            <nav class="nav-sidebar">
-                <ul class="nav">
-                    <li><a href="javascript:;">Home</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a th:href="@{/logout}"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
-                    <li class="dropdown">
-    				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Fiches modules <b class="caret"></b></a>
+			<nav class="nav-sidebar">
+			<ul class="nav">
+				<li><a href="@{/all/sheets}"> Accueil </a></li>
+				<li class="nav-divider"></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>
+						Fiches modules <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					<li><a th:href="@{/all/sheets}">Voir tous les fiches modules</a></li>
-                    <li><a th:href="@{/sheets}">Voir tous les fiches modules publié</a></li>
-                    <li><a th:href="@{/sheet/create}">Créer une fiche module</a></li>
-
-					</ul>
-					</li>
-                    <li class="dropdown">
-        			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Compétences <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-					<li><a th:href="@{/Skill}">Ajouter des compétences</a></li>
-                    <li><a th:href="@{/skills/all}">Supprimer des compétences</a></li>
-                    <li><a href="http://google.com">Dropdown Item</a></li>
-					</ul>
-					</li>
-					<li>
-        			<p class="text-center">Connecté sous le nom de « <span th:text="${session.currentFirstname}" style="text-decoration: underline;"></span> » (<a th:href="@{/logout}">Déconnexion</a>)</p>
-        			</li>
-                </ul>
-            </nav>
-        </div>
+						<li><a th:href="@{/all/sheets}">Voir tous les fiches
+								modules</a></li>
+						<li><a th:href="@{/sheets}">Voir tous les fiches modules
+								publiées</a></li>
+						<li><a th:href="@{/sheet/create}">Créer une fiche module</a></li>
+					</ul></li>
+					<li class="nav-divider"></li>
+					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>
+							Plus <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+						<li><a th:href="@{/Skill}">Ajouter des compétences</a></li>
+		                   <li><a th:href="@{/skills/all}">Supprimer des compétences</a></li>
+						</ul></li>
+					<li class="nav-divider" sec:authorize="hasRole('ROLE_ADMIN')"></li>
+					<li><a th:href="@{/logout}"><i
+						class="glyphicon glyphicon-off"></i> Déconnexion </a></li>
+				<li class="nav-divider"></li>
+			</ul>
+	      			<p class="text-center">Connecté sous le nom de « <span th:text="${session.currentFirstname}" style="text-decoration: underline;"></span> »</p>
+		</nav>
 	</aside>
 </body>
 </html>

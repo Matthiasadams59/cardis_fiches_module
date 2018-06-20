@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<style type="text/css">
+	.navbar-fixed-left{
+	width:140px;
+	position:fixed;
+	border-radius:0;
+	height:100%;
+	}
+	
+	.navbar-fixed-left .navbar-nav > li{
+	float:none;
+	width:139px;
+	}
+	
+	.navbar-fixed-left + container {
+	padding-left: 160px;
+	}
+	
+	
+	
+	
+</style>
+
+</head>
+<body>
+<nav class= "navbar navbar-inverse navbar-fixed-left">
+	<div>
+		<ul class="nav navbar-nav">
+                <li><a href="/" class="here">Accueil</a></li>
+                <li><a href="/about.html" >Fiches Modules</a></li>     
+                <li><a href="/services.html" >Rechercher</a></li>               
+                <li><a href="/pricing.html" >Mon compte</a></li>         
+        </ul>
+	</div>
+</nav>
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav.html");
+});
+</script>
+</body>
+</html>

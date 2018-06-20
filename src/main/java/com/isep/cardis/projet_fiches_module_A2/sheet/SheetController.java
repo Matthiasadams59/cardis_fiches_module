@@ -64,8 +64,12 @@ public class SheetController {
 	
 	@GetMapping(value= {"/sheets/{id}", "/Sheets/{id}", "/Sheet/{id}", "/sheet/{id}"})
 	public String getOneSheet(ModelMap model,@PathVariable Integer id) throws Exception {
-		Optional<Sheet>  sheet = sheetService.getOneSheet(id);
-		model.addAttribute("sheet", sheet.get());
+		if (sheetService.getOneSheet(id) == null) {
+			model.addAttribute("message","Cette Sheet n'existe pas");
+			return "NoFound";
+		}
+		Sheet  sheet = sheetService.getOneSheet(id).get();
+		model.addAttribute("sheet", sheet);
 		return "sheet";
 	}
 	
@@ -95,13 +99,20 @@ public class SheetController {
 		model.addAttribute("teachers", teachers);
 		return "editSheet";
 	}
+	@GetMapping(value= {"/sheet/published/{id}"})
+	public String publishedOneSheet(ModelMap model, @PathVariable Integer id) {
+		Sheet Sheet = sheetService.getOneSheet(id).get();
+		Sheet.setPublished(true);
+		sheetService.updateSheet(Sheet);
+		return "redirect:/sheets";
+	}
 	@GetMapping(value= {"/sheet/export/{id}"})
 	public String exportOneSheet(ModelMap model, @PathVariable Integer id, HttpServletResponse response) throws Exception {
-		Sheet  Sheet = sheetService.getOneSheet(id).get();
+		Sheet Sheet = sheetService.getOneSheet(id).get();
 		model.addAttribute("sheet", Sheet);
 		Map<String,Sheet> data = new HashMap<String,Sheet>();
 	    data.put("sheet",Sheet);
-	    PdfGeneratorUtil.createPdf("sheet", data, Sheet);
+	    PdfGeneratorUtil.createPdf("export", data, Sheet);
 	    PdfGeneratorUtil.DownloadPDF(response, Sheet);
 	    return "export";
 	}
