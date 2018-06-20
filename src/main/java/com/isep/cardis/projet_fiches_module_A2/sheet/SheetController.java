@@ -64,8 +64,12 @@ public class SheetController {
 	
 	@GetMapping(value= {"/sheets/{id}", "/Sheets/{id}", "/Sheet/{id}", "/sheet/{id}"})
 	public String getOneSheet(ModelMap model,@PathVariable Integer id) throws Exception {
-		Optional<Sheet>  sheet = sheetService.getOneSheet(id);
-		model.addAttribute("sheet", sheet.get());
+		if (sheetService.getOneSheet(id) == null) {
+			model.addAttribute("message","Cette Sheet n'existe pas");
+			return "NoFound";
+		}
+		Sheet  sheet = sheetService.getOneSheet(id).get();
+		model.addAttribute("sheet", sheet);
 		return "sheet";
 	}
 	
@@ -94,6 +98,14 @@ public class SheetController {
 		model.addAttribute("skills", skills);
 		model.addAttribute("teachers", teachers);
 		return "editSheet2";
+	}
+	
+	@GetMapping(value= {"/sheet/published/{id}"})
+	public String publishedOneSheet(ModelMap model, @PathVariable Integer id) {
+		Sheet Sheet = sheetService.getOneSheet(id).get();
+		Sheet.setPublished(true);
+		sheetService.updateSheet(Sheet);
+		return "redirect:/sheets";
 	}
 	
 	@GetMapping(value= {"/sheet/export/{id}"})
